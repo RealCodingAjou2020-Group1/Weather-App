@@ -69,7 +69,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596260596069</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add weather condition icons">
+      <created>1596260651873</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1596260651873</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -77,7 +84,8 @@
     <MESSAGE value="Add loading indicator" />
     <MESSAGE value="Make env and move sensitive property values" />
     <MESSAGE value="Move rendering temperature as a method" />
-    <option name="LAST_COMMIT_MESSAGE" value="Move rendering temperature as a method" />
+    <MESSAGE value="Add weather condition icons" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add weather condition icons" />
   </component>
   <component name="WindowStateProjectService">
     <state x="487" y="213" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1596251630027">
@@ -89,10 +97,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824/1920.0.1680.1010@0.0.1536.824" timestamp="1596257161751" />
-    <state x="384" y="0" key="CommitChangelistDialog2" timestamp="1596260594272">
+    <state x="384" y="0" key="CommitChangelistDialog2" timestamp="1596260649829">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="384" y="0" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1680.1010@0.0.1536.824" timestamp="1596260594272" />
+    <state x="384" y="0" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1680.1010@0.0.1536.824" timestamp="1596260649829" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1596257041367">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -105,5 +113,9 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="180" y="22" key="new project wizard/0.0.1536.824/1920.0.1680.1010@0.0.1536.824" timestamp="1596257168758" />
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1596260700288">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824/1920.0.1680.1010@0.0.1536.824" timestamp="1596260700288" />
   </component>
 </project>

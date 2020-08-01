@@ -84,7 +84,9 @@ export default class WeatherDetailScreen extends React.Component {
     return (
       <View style={styles.container}>
         {this.renderTemperature()}
-        {this.renderWeatherCondition()}
+        <View style={styles.conditionContainer}>
+          {this.renderWeatherCondition()}
+        </View>
       </View>
     );
   }
@@ -93,6 +95,11 @@ export default class WeatherDetailScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#8888FF',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
+  conditionContainer:{
+    flexDirection: 'row'
+  }
 });
