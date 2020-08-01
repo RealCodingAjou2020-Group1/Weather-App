@@ -31,7 +31,7 @@ export default class WeatherDetailScreen extends React.Component {
     const celsius = this.state.main.temp - 273.15;
 
     return (
-      <Text>온도: {celsius.toFixed(1)}</Text>
+      <Text style={styles.textCondition}>온도: {celsius.toFixed(1)}</Text>
     )
   }
 
@@ -49,7 +49,7 @@ export default class WeatherDetailScreen extends React.Component {
     const text = (clouds === null) ? '정보 없음' : cloudStatus[Math.max(parseInt(clouds / 20), 4)];
 
     return (
-      <Text>구름: {text}</Text>
+      <Text style={styles.textCondition}>구름: {text}</Text>
     );
   }
 
@@ -67,7 +67,7 @@ export default class WeatherDetailScreen extends React.Component {
 
     return (
       <View style={[styles.inRow, styles.alignItemInCenter]}>
-        <Text>
+        <Text style={styles.textCondition}>
           풍속: {speed? `${speed}m/s` : '정보 없음'}
         </Text>
         <View style={[arrowStyle]}>
@@ -146,7 +146,6 @@ export default class WeatherDetailScreen extends React.Component {
         <View style={styles.inRow}>
           {this.renderWeatherCondition()}
         </View>
-
         {this.renderGoogleMap()}
       </View>
     );
@@ -156,7 +155,7 @@ export default class WeatherDetailScreen extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#8888FF',
+    backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -167,7 +166,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   mapContainer: {
-    width: '90%',
+    width: '80%',
     borderWidth: 1,
     borderColor: '#2222AA'
   },
@@ -180,7 +179,8 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   textCondition: {
-    color: '#FFF',
+    color: '#000',
+    fontSize: 22,
   },
   rotation: {
     width: 50,
