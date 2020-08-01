@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="698568f5-c3df-4e55-8627-be66fb1a4e48" name="Default Changelist" comment="Make weather condition icon">
-      <change afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/CityListApi.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/OpenWeatherApi.js" afterDir="false" />
+    <list default="true" id="698568f5-c3df-4e55-8627-be66fb1a4e48" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CityList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/CityList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WeatherDetailScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/WeatherDetailScreen.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/screens/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/CityList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/CityList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/screens/WeatherDetailScreen.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/screens/WeatherDetailScreen.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +86,14 @@
       <option name="project" value="LOCAL" />
       <updated>1596261128680</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Restruct project directories">
+      <created>1596264848707</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1596264848708</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -102,7 +103,8 @@
     <MESSAGE value="Move rendering temperature as a method" />
     <MESSAGE value="Add weather condition icons" />
     <MESSAGE value="Make weather condition icon" />
-    <option name="LAST_COMMIT_MESSAGE" value="Make weather condition icon" />
+    <MESSAGE value="Restruct project directories" />
+    <option name="LAST_COMMIT_MESSAGE" value="Restruct project directories" />
   </component>
   <component name="WindowStateProjectService">
     <state x="487" y="213" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1596251630027">
@@ -114,10 +116,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="499" y="159" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1536.824/1920.0.1680.1010@0.0.1536.824" timestamp="1596257161751" />
-    <state x="384" y="0" key="CommitChangelistDialog2" timestamp="1596264740697">
+    <state x="384" y="0" key="CommitChangelistDialog2" timestamp="1596264846192">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="384" y="0" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1680.1010@0.0.1536.824" timestamp="1596264740697" />
+    <state x="384" y="0" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1680.1010@0.0.1536.824" timestamp="1596264846192" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1596262150549">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
