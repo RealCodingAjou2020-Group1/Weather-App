@@ -37,6 +37,14 @@ export default class WeatherDetailScreen extends React.Component {
       });
   }
 
+  renderTemperature(){
+    const celsius = this.state.main.temp - 273.15;
+
+    return (
+      <Text>온도 : {celsius.toFixed(1)}</Text>
+    )
+  }
+
   render() {
     const {
       route: {
@@ -45,7 +53,7 @@ export default class WeatherDetailScreen extends React.Component {
       navigation,
     } = this.props;
 
-    navigation.setOptions({ title: `Weather Information: ${city}` });
+    navigation.setOptions({ title: `${city} 날씨` });
 
     if (this.state.isLoading) {
       return (
@@ -55,11 +63,10 @@ export default class WeatherDetailScreen extends React.Component {
       )
     }
 
-    let celsius = this.state.main.temp - 273.15;
 
     return (
       <View style={styles.container}>
-        <Text>온도: {celsius.toFixed(1)}</Text>
+        {this.renderTemperature()}
       </View>
     );
   }
