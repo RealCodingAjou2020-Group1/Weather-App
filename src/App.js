@@ -1,13 +1,12 @@
 import * as React from 'react';
 import 'react-native-gesture-handler';
-
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import{
+import {
   HomeScreen,
   DetailScreen,
-  HomePage
 } from './screens';
+
 export default class App extends React.Component {
   static Stack = createStackNavigator();
 
@@ -16,21 +15,16 @@ export default class App extends React.Component {
 
     return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Start">
-          <Stack.Screen
-            name="Start"
-            component={HomePage}
-            options={{title: ''}}
-          />
+        <Stack.Navigator initialRouteName="Home">
           <Stack.Screen
             name="Home"
             component={HomeScreen}
-            options={{ title: '지역 선택' }}
+            options={{ title: '지역 선택'}}
           />
           <Stack.Screen
             name="Detail"
             component={DetailScreen}
-            options={{ title: '날씨' }}
+            options={{ title: '날씨', headerShown: false }}
           />
         </Stack.Navigator>
       </NavigationContainer>

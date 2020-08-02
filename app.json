@@ -1,9 +1,9 @@
 {
-  "name": "mynewproject",
-  "displayName": "mynewproject",
+  "name": "WeatherApp",
+  "displayName": "WeatherApp",
   "expo": {
-    "name": "mynewproject",
-    "slug": "mynewproject",
+    "name": "WeatherApp",
+    "slug": "WeatherApp",
     "version": "1.0.0",
     "assetBundlePatterns": [
       "**/*"
