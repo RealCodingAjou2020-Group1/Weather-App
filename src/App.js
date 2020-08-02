@@ -6,6 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import{
   HomeScreen,
   DetailScreen,
+  HomePage
 } from './screens';
 export default class App extends React.Component {
   static Stack = createStackNavigator();
@@ -15,7 +16,12 @@ export default class App extends React.Component {
 
     return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="Home">
+        <Stack.Navigator initialRouteName="Start">
+          <Stack.Screen
+            name="Start"
+            component={HomePage}
+            options={{title: ''}}
+          />
           <Stack.Screen
             name="Home"
             component={HomeScreen}
