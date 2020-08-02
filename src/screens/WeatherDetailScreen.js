@@ -1,9 +1,11 @@
 import React from 'react';
-import { ActivityIndicator, Image, StyleSheet, View, Text, LinearGradient} from 'react-native';
+import { ActivityIndicator, Image, StyleSheet, View, Text} from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons'; 
+import { AntDesign } from '@expo/vector-icons';
 import openWeatherApi from '../api/OpenWeatherApi';
+import Constants from 'expo-constants';
 import _get from 'lodash.get';
+import { LinearGradient } from "expo-linear-gradient";
 
 export default class WeatherDetailScreen extends React.Component {
   constructor(props) {
@@ -47,7 +49,7 @@ export default class WeatherDetailScreen extends React.Component {
   }
 
   renderDay() {
-    let today = new Date();   
+    let today = new Date();
     let day = today.getDay();  // 요일
     if(day == 0)
     {
@@ -68,7 +70,7 @@ export default class WeatherDetailScreen extends React.Component {
   renderWind() {
     const speed = _get(this.state, ['wind', 'speed'], null);
     const deg = _get(this.state, ['wind', 'deg'], null);
-    
+
     const arrowStyle = {
       transform: [
          { rotate: `${deg}deg`}
@@ -123,6 +125,30 @@ export default class WeatherDetailScreen extends React.Component {
     });
   }
 
+  renderGoogleMap() {
+    const {
+      lat, lon
+    } = this.state.coord;
+
+    const googleApiKey = _get(Constants, ['manifest', 'extra', 'googleApiKey'], null);
+
+    if (!googleApiKey) {
+      return undefined;
+    }
+
+    const url = `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lon}&markers=color:red%7C${lat},${lon}&zoom=9&size=400x400&maptype=roadmap&key=${googleApiKey}`;
+
+    return (
+      <View style={styles.mapContainer}>
+        <Image style={styles.mapImage}
+          resizeMode={'stretch'}
+          resizeMethod={'scale'}
+          source={{ uri: url, }}
+        />
+      </View>
+    );
+  }
+
   render() {
     const {
       route: {
@@ -140,32 +166,35 @@ export default class WeatherDetailScreen extends React.Component {
         </View>
       )
     }
-    
+
     return (
-      <View style = {styles.container}>
-        <View style={styles.conditionContainer}>
-          {this.renderWeatherCondition()}
-        </View>
-        <View style = {styles.container_mid}>
-          <View>
-            {this.renderTemperature()}
+       <LinearGradient
+          colors={["#00C6FB", "#005BEA"]}
+          style = {styles.container}
+       >
+          <View style={styles.conditionContainer}>
+            {this.renderWeatherCondition()}
           </View>
-          <View style = {styles.container_today}>
+          <View style = {styles.container_mid}>
             <View>
-              {this.renderDay()}
+              {this.renderTemperature()}
             </View>
-            <View>
-              {this.renderWeather()}
+            <View style = {styles.container_today}>
+              <View>
+                {this.renderDay()}
+              </View>
+              <View>
+                {this.renderWeather()}
+              </View>
             </View>
           </View>
-        </View>
-        <View style={styles.container_wind}>
-          {this.renderWind()}
-        </View>
-        <View style={styles.container_location}>
-          {this.renderLocation()}
-        </View>
-      </View>
+          <View style={styles.container_wind}>
+            {this.renderWind()}
+          </View>
+          <View style = {styles.alignItemInCenter}>
+            {this.renderGoogleMap()}
+          </View>
+      </LinearGradient>
     );
   }
 }
@@ -177,17 +206,25 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     paddingTop: Platform.OS === `ios` ? 0 : Expo.Constants.statusBarHeight,
   },
-
+  alignItemInCenter: {
+      alignItems: 'center',
+    },
   conditionContainer: {
     flex: 2,
     flexDirection: 'row',
-    alignItems: "center",
     justifyContent: "center",
-    padding: 10,
+    padding: 1,
   },
-
+  mapContainer: {
+     width: '70%',
+     borderWidth: 1,
+     borderColor: '#2222AA',
+  },
+  mapImage: {
+     aspectRatio: 1,
+  },
   text_temp: {
-    fontSize: 100,
+    fontSize: 80,
     justifyContent: 'flex-end',
     alignItems: "flex-start",
   },
@@ -198,16 +235,15 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
   },
-
   container_mid: {
     flex: 1,
     flexDirection: 'row',
-    padding: 10,
+    padding: 1,
   },
-  
+
   container_today: {
     flexDirection: 'column',
-    padding: 10,
+    padding: 1,
     alignItems: "flex-start",
     justifyContent: "center",
   },
@@ -216,7 +252,6 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: "flex-start",
   },
-
   container_wind: {
     flex: 1,
     flexDirection: 'row',
@@ -228,15 +263,5 @@ const styles = StyleSheet.create({
   },
   text_wind1: {
     fontSize: 20,
-  },
-
-  container_location: {
-    flex: 1,
-    flexDirection: 'column',
-    alignItems: "center",
-  },
-  text_location: {
-    fontSize: 20,
-    padding: 20,
   },
 });
