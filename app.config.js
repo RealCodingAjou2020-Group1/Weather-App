@@ -1,3 +1,4 @@
+// https://docs.expo.io/guides/environment-variables/#from-appconfigjs
 import 'dotenv/config';
 
 const {

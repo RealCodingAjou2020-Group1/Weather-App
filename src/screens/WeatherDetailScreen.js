@@ -1,7 +1,7 @@
 import React from 'react';
-import { ActivityIndicator, Image, StyleSheet, View, Text} from 'react-native';
+import { ActivityIndicator, Image, StyleSheet, View, Text } from 'react-native';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { AntDesign } from '@expo/vector-icons';
+import { AntDesign } from '@expo/vector-icons'; 
 import openWeatherApi from '../api/OpenWeatherApi';
 import Constants from 'expo-constants';
 import _get from 'lodash.get';
@@ -18,7 +18,6 @@ export default class WeatherDetailScreen extends React.Component {
 
   componentDidMount() {
     this.setState({ isLoading: true });
-
     openWeatherApi.fetchWeatherInfoByCityName(this.props.route.params.city)
       .then(info => {
         console.log(info);
@@ -49,7 +48,7 @@ export default class WeatherDetailScreen extends React.Component {
   }
 
   renderDay() {
-    let today = new Date();
+    let today = new Date();   
     let day = today.getDay();  // 요일
     if(day == 0)
     {
@@ -59,8 +58,26 @@ export default class WeatherDetailScreen extends React.Component {
     {
       day = "MON";
     }
-    let hours = today.getHours(); // 시
-    let minutes = today.getMinutes();  // 분
+    else if(day == 2)
+    {
+      day = "TUE";
+    }
+    else if(day == 3)
+    {
+      day = "WED";
+    }
+    else if(day == 4)
+    {
+      day = "THU";
+    }
+    else if(day == 5)
+    {
+      day = "FRI";
+    }
+    else if(day == 6)
+    {
+      day = "SAT";
+    }
 
     return (
       <Text style={styles.text_day}>{day}</Text>
@@ -70,7 +87,7 @@ export default class WeatherDetailScreen extends React.Component {
   renderWind() {
     const speed = _get(this.state, ['wind', 'speed'], null);
     const deg = _get(this.state, ['wind', 'deg'], null);
-
+    
     const arrowStyle = {
       transform: [
          { rotate: `${deg}deg`}
@@ -88,26 +105,12 @@ export default class WeatherDetailScreen extends React.Component {
           m/s
         </Text>
         <View style={[arrowStyle]}>
-          <MaterialCommunityIcons name="arrow-up-circle" size={25} color="black" />
+          <MaterialCommunityIcons name="arrow-up-circle" size={25} color="white" />
         </View>
       </View>
     );
   }
 
-  renderLocation() {
-    const location = this.state.name;
-
-    return (
-      <View style={styles.container_location}>
-        <View>
-          <AntDesign name="enviroment" size={48} color="black" />
-        </View>
-        <Text style={styles.text_location}>
-          {location}
-        </Text>
-      </View>
-    );
-  }
   renderWeatherCondition() {
     // https://openweathermap.org/weather-conditions
     return this.state.weather.map(({
@@ -125,6 +128,16 @@ export default class WeatherDetailScreen extends React.Component {
     });
   }
 
+  renderFeelsLike() {
+    const feelsLike = this.state.main.feels_like - 273.15;
+
+    return (
+      <Text style = {styles.text_day}>
+        체감온도 {feelsLike.toFixed(1)}°
+      </Text>
+    );
+  }
+
   renderGoogleMap() {
     const {
       lat, lon
@@ -137,12 +150,11 @@ export default class WeatherDetailScreen extends React.Component {
     }
 
     const url = `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lon}&markers=color:red%7C${lat},${lon}&zoom=9&size=400x400&maptype=roadmap&key=${googleApiKey}`;
+    console.log(url);
 
     return (
-      <View style={styles.mapContainer}>
+      <View>
         <Image style={styles.mapImage}
-          resizeMode={'stretch'}
-          resizeMethod={'scale'}
           source={{ uri: url, }}
         />
       </View>
@@ -166,34 +178,33 @@ export default class WeatherDetailScreen extends React.Component {
         </View>
       )
     }
-
+    
     return (
-       <LinearGradient
+      <LinearGradient
           colors={["#00C6FB", "#005BEA"]}
           style = {styles.container}
        >
-          <View style={styles.conditionContainer}>
-            {this.renderWeatherCondition()}
+        <View style={styles.conditionContainer}>
+          {this.renderWeatherCondition()}
+        </View>
+        <View style = {styles.container_mid}>
+          <View>
+            {this.renderTemperature()}
           </View>
-          <View style = {styles.container_mid}>
-            <View>
-              {this.renderTemperature()}
-            </View>
-            <View style = {styles.container_today}>
+          <View style = {styles.container_today}>
               <View>
                 {this.renderDay()}
-              </View>
-              <View>
                 {this.renderWeather()}
+                {this.renderFeelsLike()}
               </View>
             </View>
-          </View>
-          <View style={styles.container_wind}>
-            {this.renderWind()}
-          </View>
-          <View style = {styles.alignItemInCenter}>
-            {this.renderGoogleMap()}
-          </View>
+        </View>
+        <View style={styles.container_wind}>
+          {this.renderWind()}
+        </View>
+        <View style={styles.mapContainer}>
+          {this.renderGoogleMap()}
+        </View>
       </LinearGradient>
     );
   }
@@ -206,62 +217,67 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     paddingTop: Platform.OS === `ios` ? 0 : Expo.Constants.statusBarHeight,
   },
-  alignItemInCenter: {
-      alignItems: 'center',
-    },
+
   conditionContainer: {
     flex: 2,
     flexDirection: 'row',
+    alignItems: "center",
     justifyContent: "center",
-    padding: 1,
+    padding: 10,
   },
-  mapContainer: {
-     width: '70%',
-     borderWidth: 1,
-     borderColor: '#2222AA',
-  },
-  mapImage: {
-     aspectRatio: 1,
-  },
+
   text_temp: {
-    fontSize: 80,
+    fontSize: 90,
     justifyContent: 'flex-end',
     alignItems: "flex-start",
+    color: "white",
   },
   text_temp1: {
     fontSize: 30,
+    color: "white",
   },
   container_temp: {
     flex: 1,
     flexDirection: 'row',
   },
+
   container_mid: {
     flex: 1,
     flexDirection: 'row',
-    padding: 1,
+    padding: 20,  
+    justifyContent: "center",
+    alignItems: "center",
   },
-
+  
   container_today: {
     flexDirection: 'column',
-    padding: 1,
-    alignItems: "flex-start",
-    justifyContent: "center",
+    padding: 10,
   },
   text_day: {
-    fontSize: 25,
-    justifyContent: 'flex-start',
-    alignItems: "flex-start",
+    fontSize: 20,
+    color: "white",
   },
+
   container_wind: {
     flex: 1,
     flexDirection: 'row',
-    alignItems: "flex-start",
+    alignItems: "center",
     justifyContent: "center",
   },
   text_wind: {
     fontSize: 30,
+    color: "white",
   },
   text_wind1: {
     fontSize: 20,
+    color: "white",
+  },
+
+  mapContainer: {
+    flex: 2,
+  },
+  mapImage: {
+    aspectRatio: 1,
+    width: "100%",
   },
 });
