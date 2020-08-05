@@ -4,10 +4,18 @@ import { View, StyleSheet } from 'react-native';
 
 import CityList from './CityList';
 import WeatherDetailScreen from './WeatherDetailScreen';
+import StartPage from './StartPage';
 
-export const HomeScreen = ({ navigation }) => (
+export const HomePage = ({navigation}) => (
   <View style={styles.container}>
-    <CityList navigation={navigation} />
+      <StartPage navigation={navigation}/>
+      <StatusBar style="auto" />
+  </View>
+);
+
+export const HomeScreen = ({ navigation, route }) => (
+  <View style={styles.container}>
+    <CityList navigation={navigation} route={route}/>
     <StatusBar style="auto" />
   </View>
 );
