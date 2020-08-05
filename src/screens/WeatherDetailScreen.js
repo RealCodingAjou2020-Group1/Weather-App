@@ -40,6 +40,16 @@ export default class WeatherDetailScreen extends React.Component {
     );
   }
 
+  renderFeelsLike() {
+    const feelsLike = this.state.main.feels_like - 273.15;
+
+    return (
+      <Text style = {styles.text_day}>
+        체감 온도: {feelsLike.toFixed(1)}
+      </Text>
+    );
+  }
+
   renderWeather() {
     const weather = _get(this.state, ['weather', '0', 'description'], null);
 
@@ -58,6 +68,26 @@ export default class WeatherDetailScreen extends React.Component {
     else if(day == 1)
     {
       day = "MON";
+    }
+    else if(day == 2)
+    {
+      day = "TUE";
+    }
+    else if(day == 3)
+    {
+      day = "WED";
+    }
+    else if(day == 4)
+    {
+      day = "THU";
+    }
+    else if(day == 5)
+    {
+      day = "FRI";
+    }
+    else if(day == 6)
+    {
+      day = "SAT";
     }
     let hours = today.getHours(); // 시
     let minutes = today.getMinutes();  // 분
@@ -108,6 +138,7 @@ export default class WeatherDetailScreen extends React.Component {
       </View>
     );
   }
+
   renderWeatherCondition() {
     // https://openweathermap.org/weather-conditions
     return this.state.weather.map(({
@@ -182,8 +213,7 @@ export default class WeatherDetailScreen extends React.Component {
             <View style = {styles.container_today}>
               <View>
                 {this.renderDay()}
-              </View>
-              <View>
+                {this.renderFeelsLike()}
                 {this.renderWeather()}
               </View>
             </View>
