@@ -161,6 +161,21 @@ export default class WeatherDetailScreen extends React.Component {
     );
   }
 
+  renderLocation() {
+    const location = this.state.name;
+
+    return (
+      <View style={styles.container_location}>
+        <View>
+          <AntDesign name="enviroment" size={30} color="white" />
+        </View>
+        <Text style={styles.text_location}>
+          {location}
+        </Text>
+      </View>
+    );
+  }
+
   render() {
     const {
       route: {
@@ -201,6 +216,9 @@ export default class WeatherDetailScreen extends React.Component {
         </View>
         <View style={styles.container_wind}>
           {this.renderWind()}
+        </View>
+        <View style={styles.container_location}>
+          {this.renderLocation()}
         </View>
         <View style={styles.mapContainer}>
           {this.renderGoogleMap()}
@@ -264,6 +282,19 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+
+  container_location: {
+    flex: 1,
+    flexDirection: 'row',
+    alignItems: "flex-end",
+    justifyContent: "center",
+    padding: 3,
+  },
+  text_location: {
+    fontSize: 25,
+    color: "white",
+  },
+
   text_wind: {
     fontSize: 30,
     color: "white",
