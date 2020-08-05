@@ -20,7 +20,7 @@ export default class App extends React.Component {
           <Stack.Screen
             name="Start"
             component={HomePage}
-            options={{title: ''}}
+            options={{title: '', headerShown : false, }}
           />
           <Stack.Screen
             name="Home"
@@ -30,7 +30,7 @@ export default class App extends React.Component {
           <Stack.Screen
             name="Detail"
             component={DetailScreen}
-            options={{ title: '날씨' }}
+            options={{ title: '날씨', headerShown : false, }}
           />
         </Stack.Navigator>
       </NavigationContainer>
