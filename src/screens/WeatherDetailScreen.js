@@ -149,7 +149,7 @@ export default class WeatherDetailScreen extends React.Component {
       return undefined;
     }
 
-    const url = `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lon}&markers=color:red%7C${lat},${lon}&zoom=9&size=400x400&maptype=roadmap&key=${googleApiKey}`;
+    const url = `https://maps.googleapis.com/maps/api/staticmap?center=${lat},${lon}&markers=color:red%7C${lat},${lon}&zoom=10&size=800x400&maptype=roadmap&key=${googleApiKey}`;
     console.log(url);
 
     return (
@@ -308,7 +308,7 @@ const styles = StyleSheet.create({
     flex: 2,
   },
   mapImage: {
-    aspectRatio: 1,
+    aspectRatio: 1.5,
     width: "100%",
   },
 });
